@@ -1,0 +1,30 @@
+{
+  "EnglishSymbols": "qwertyuiop[]asdfghjkl;'zxcvbnm,.`QWERTYUIOP[]ASDFGHJKL;'ZXCVBNM,.`~",
+  "LocalSymbols": [
+    "йцукенгшщзхъфывапролджэячсмитьбю.ёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.Ё"
+  ],
+  "ReplaceableWords": [
+    "add",
+    "bisect",
+    "branch",
+    "checkout",
+    "clone",
+    "commit",
+    "diff",
+    "fetch",
+    "init",
+    "log",
+    "merge",
+    "pull",
+    "push",
+    "rebase",
+    "reset",
+    "status",
+    "tag",
+    "--all",
+    "-a",
+    "--message",
+    "-m",
+    "--no-edit"
+  ]
+}

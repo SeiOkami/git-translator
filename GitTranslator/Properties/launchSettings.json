@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GitTranslator": {
+      "commandName": "Project",
+      "commandLineArgs": "status"
+    }
+  }
+}

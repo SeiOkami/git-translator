@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitTranslator", "GitTranslator.csproj", "{3DEB16EE-E454-4AED-A26B-517689AF7D54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\UnitTests\UnitTests.csproj", "{BD9721DC-E985-44E5-8E73-3DA7FA596063}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3DEB16EE-E454-4AED-A26B-517689AF7D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DEB16EE-E454-4AED-A26B-517689AF7D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DEB16EE-E454-4AED-A26B-517689AF7D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD9721DC-E985-44E5-8E73-3DA7FA596063}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD9721DC-E985-44E5-8E73-3DA7FA596063}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD9721DC-E985-44E5-8E73-3DA7FA596063}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD9721DC-E985-44E5-8E73-3DA7FA596063}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
