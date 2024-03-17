@@ -1,9 +1,12 @@
 {
-  "EnglishSymbols": "qwertyuiop[]asdfghjkl;'zxcvbnm,.`QWERTYUIOP[]ASDFGHJKL;'ZXCVBNM,.`~",
-  "LocalSymbols": [
+  "DisplayTextBeforeRedirection": "Перенаправление команды в git:",
+  "DisplayGitCommandArguments": true,
+  "UseLayoutSubstitution": true,
+  "EnglishLayoutSymbols": "qwertyuiop[]asdfghjkl;'zxcvbnm,.`QWERTYUIOP[]ASDFGHJKL;'ZXCVBNM,.`~",
+  "LocalLayoutSymbols": [
     "йцукенгшщзхъфывапролджэячсмитьбю.ёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.Ё"
   ],
-  "ReplaceableWords": [
+  "ReplaceableLayoutWords": [
     "add",
     "bisect",
     "branch",
@@ -22,9 +25,27 @@
     "status",
     "tag",
     "--all",
+    "info",
+    "help",
     "-a",
     "--message",
     "-m",
     "--no-edit"
-  ]
+  ],
+  "UseReplacementDictionary": true,
+  "ReplacementDictionary": {
+    "статус": "status",
+    "ыефегы": "status",
+    "пул": "pull",
+    "згдд": "pull",
+    "пуш": "push",
+    "згыр": "push",
+    "стяни": "clone",
+    "комить": "commit",
+    "помощь": "help",
+    "хелп": "help",
+    "рудз": "help",
+    "инфо": "info",
+    "штащ": "info"
+  }
 }

@@ -36,5 +36,11 @@ public class GitTranslatorArgumentsTests
             "ыефегы",
             "status",
         };
+
+        yield return new Object[] {
+            "статус",
+            "status",
+        };
+
     }
 }

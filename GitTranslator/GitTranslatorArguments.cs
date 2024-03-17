@@ -19,26 +19,47 @@ public static class GitTranslatorArguments
         for (int i = 0; i < inputStrings.Length; i++)
         {
             var inputString = inputStrings[i];
-            var translatedString = TranslatedString(inputString, config);
+            string? translatedString = null;
+
+            FillTranslatedString_UseLayoutSubstitution(inputString, config, ref translatedString);
+
+            FillTranslatedString_UseReplacementDictionary(inputString, config, ref translatedString);
+
             result[i] = translatedString ?? inputString;
         }
 
         return string.Join(' ', result);
     }
 
-    private static string? TranslatedString(string inputString, Configurarion config)
+    private static void FillTranslatedString_UseLayoutSubstitution(string inputString, Configurarion config, ref string? translatedString)
     {
-        foreach (var symbolDict in config.LocalSymbols)
+        if (translatedString != null
+            || !config.UseLayoutSubstitution)
+            return;
+
+        foreach (var symbolDict in config.LocalLayoutSymbols)
         {
-            var translatedString = new string(
+            var thisString = new string(
                 inputString.Select(
                     c => symbolDict.TryGetValue(c, out char replacement) ? replacement : c).ToArray());
 
-            if (config.ReplaceableWords.Contains(translatedString.ToLower()))
-                return translatedString;
+            if (config.ReplaceableLayoutWords.Contains(thisString.ToLower()))
+            {
+                translatedString = thisString;
+                break;
+            }
         }
+    }
 
-        return null;
+    private static void FillTranslatedString_UseReplacementDictionary(string inputString, Configurarion config, ref string? translatedString)
+    {
+        if (translatedString != null
+            || !config.UseReplacementDictionary)
+            return;
+
+        var key = inputString.ToLower();
+        if (config.ReplacementDictionary.ContainsKey(key))
+            translatedString = config.ReplacementDictionary[key];
     }
 
 }

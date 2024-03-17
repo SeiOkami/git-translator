@@ -8,8 +8,13 @@ public class Configurarion
     private const string DEFAULT_CONFIGURATION_FILE = "configuration.json";
     private static Configurarion? _defaultConfiguration;
 
-    public LocalSymbolsDictionary[] LocalSymbols { get; set; } = [];
-    public string[] ReplaceableWords { get; set; } = [];
+    public string DisplayTextBeforeRedirection { get; set; } = String.Empty;
+    public bool DisplayGitCommandArguments { get; set; }
+    public bool UseLayoutSubstitution { get; set; } = false;
+    public LocalSymbolsDictionary[] LocalLayoutSymbols { get; set; } = [];
+    public string[] ReplaceableLayoutWords { get; set; } = [];
+    public bool UseReplacementDictionary { get; set; } = false;
+    public Dictionary<string, string> ReplacementDictionary { get; set; } = [];
 
     public static Configurarion DefaultConfiguration
     {
@@ -31,18 +36,11 @@ public class Configurarion
 
     public Configurarion(FileConfigurationModel model)
     {
-        if (model.EnglishSymbols == null
-            || model.ReplaceableWords == null
-            || model.LocalSymbols == null)
-            return;
+        DisplayTextBeforeRedirection = model.DisplayTextBeforeRedirection ?? "";
+        DisplayGitCommandArguments = model.DisplayGitCommandArguments;
 
-        ReplaceableWords = model.ReplaceableWords;
-
-        LocalSymbols = new LocalSymbolsDictionary[model.LocalSymbols.Length];
-        for (int i = 0; i < LocalSymbols.Length; i++)
-        {
-            LocalSymbols[i] = new LocalSymbolsDictionary(model.EnglishSymbols, model.LocalSymbols[i]);
-        }
+        FillLayoutSubstitution(model);
+        FillReplacementDictionary(model);
     }
 
     public Configurarion(string filePath) : this(ModelFromFile(filePath)) { }
@@ -61,6 +59,40 @@ public class Configurarion
         else
         {
             throw new FileNotFoundException(filePath);
+        }
+    }
+
+    private void FillLayoutSubstitution(FileConfigurationModel model)
+    {
+        if (!model.UseLayoutSubstitution
+            || model.EnglishLayoutSymbols == null
+            || model.ReplaceableLayoutWords == null
+            || model.LocalLayoutSymbols == null)
+            return;
+
+        UseLayoutSubstitution = true;
+
+        ReplaceableLayoutWords = model.ReplaceableLayoutWords;
+
+        LocalLayoutSymbols = new LocalSymbolsDictionary[model.LocalLayoutSymbols.Length];
+        for (int i = 0; i < LocalLayoutSymbols.Length; i++)
+        {
+            LocalLayoutSymbols[i] = new LocalSymbolsDictionary(
+                model.EnglishLayoutSymbols, model.LocalLayoutSymbols[i]);
+        }
+    }
+
+    private void FillReplacementDictionary(FileConfigurationModel model)
+    {
+        if (!model.UseReplacementDictionary
+            || model.ReplacementDictionary == null)
+            return;
+
+        UseReplacementDictionary = true;
+
+        foreach (var keyValue in model.ReplacementDictionary)
+        {
+            ReplacementDictionary.Add(keyValue.Key.ToLower(), keyValue.Value.ToLower());
         }
     }
 
